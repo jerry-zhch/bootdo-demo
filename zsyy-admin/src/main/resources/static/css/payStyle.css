@@ -1,0 +1,361 @@
+.paylist{
+	font-size: 12px;
+	line-height: 25px;
+	margin-bottom: -7px;
+	position: relative;
+}
+.paytop{
+	height: 38px;
+	margin-top: -15px;
+	line-height: 38px;
+	position: relative;
+	margin-right: -15px;
+}
+.paytop:after{
+	position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0px;
+    height: 1px;
+    content: '';
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    background-color: #e6e6e6;
+}
+.paytop:before{
+	font-family: 'rbkmark';
+    content: '\e906';
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    color: #dedede;
+}
+.paystate{
+	color: #ff4200;
+	position: absolute;
+	right: 32px;
+	top: 0px;
+}
+.disabled{
+	color: #c2c2c2
+}
+.lite{
+	color: #8f8f8f;
+}
+.dept{
+	font-size: 14px;
+	line-height: 30px;
+	margin-top: 8px;
+}
+.deptType.hastype{
+	border: #22a7f0 solid 1px;
+	color: #22a7f0;
+	font-size: 12px;
+	padding: 2px 4px;
+	border-radius: 5px;
+	margin-left: 5px;
+}
+.payTime:before{
+	font-family: 'rbkmark';
+    content: '\e908';
+    margin-right: 5px;
+    position: relative;
+    top: 1px;
+}
+.paybtn{
+	display: inline-block;
+	position: absolute;
+	right: 0px;
+	bottom: 2px;
+}
+.paybtn>button{
+	display: block;
+	margin-top: 10px;
+	color: #8f8f8f;
+	display: none;
+}
+.paybtn>button.true{
+	display: block;
+}
+button.bluebtn{
+	border: #22a7f0 solid 1px;
+	color: #22a7f0;
+}
+button.bluebtn:active{
+	background: #D3E3EC;
+	color: #22a7f0;
+}
+.infoTop{
+	height: 65px;
+	background: #1c98fc;
+	color: #FFFFFF;
+	padding: 15px;
+	line-height: 35px;
+	position: relative;
+	font-size: 14px;
+}
+.topType{
+	position: absolute;
+	right: 53px;
+	top: 15px;
+	
+}
+.topType:after{
+	font-family: 'rbkmark';
+    height: 30px;
+    width: 30px;
+    background: #FFFFFF;
+    border-radius: 50%;
+    display: inline-block;
+    color: #1c98fc;
+    text-align: center;
+    line-height: 30px;
+    font-size: 18px;
+    position: absolute;
+    top: 1px;
+    right: -38px;
+}
+.topType.jficon:after{
+	content: '\e932';
+}
+.topType.jcicon:after{
+	content: '\e923';
+}
+.topType.ypicon:after{
+	content: '\e931';
+}
+.topType.yyicon:after{
+	content: '\e92e';
+}
+.payInfoList{
+	background: #FFFFFF;
+	padding: 15px;
+	margin-bottom: 15px;
+}
+.payInfoList>label{
+	line-height: 30px;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	position: relative;
+	padding-left: 80px;
+}
+.payInfoList.money>label{
+	padding-left: 125px;
+}
+.payInfoList.drug>label{
+	padding-left: 0px;
+}
+.payInfoList.money>label:first-child{
+	color: #ffae36;
+}
+.payInfoList>label>span{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	color: #8f8f8f;
+}
+.payInfoList>.paytitle{
+	color: #8F8F8F;
+	font-size: 14px;
+	margin-top: -5px;
+	margin-right: -15px;
+	position: relative;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+}
+.payInfoList>.paytitle [class^=icon-]{
+	position: relative;
+	top: 1px;
+	margin-right: 5px;
+	font-size: 15px;
+}
+.payInfoList>.paytitle:after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0px;
+    height: 1px;
+    content: '';
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    background-color: #e6e6e6;
+}
+.mainInfo{
+	margin-bottom: 50px;
+}
+.mainInfo>label{
+	display: block;
+	color: #8f8f8f;
+	line-height: 30px;
+	display: block;
+	text-align: center;
+}
+.btnlist{
+	padding-top: 15px;
+	display: flex;
+	justify-content: space-between;
+}
+.btnlist>button{
+	width: 45%;
+	position: relative;
+}
+.btnlist>button:active{
+	background: #FFFFFF;
+	color: #333333;
+}
+.btnlist>button.current{
+	border: #1c98fc solid 1px;
+	overflow: hidden;
+}
+.btnlist>button.current:before{
+	font-family: 'rbkmark';
+	content: '\e907';
+	position: absolute;
+    right: -1px;
+    top: -2px;
+    color: #1c98fc;
+}
+.topspace{
+	margin-top: 8px;
+	display: block;
+}
+.rightgo{
+	position: absolute;
+	right: 15px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.icon-sexboy{
+	color: #9dc1f7;
+}
+.icon-sexgirl{
+	color: #ffb1c6;
+}
+.labelleft{
+	display: inline-block;
+	width: 60px;
+}
+.rightgo b{
+	font-size: 20px;
+	font-weight: normal;
+}
+.payInfoList .payTop{
+	position: relative;
+	margin-right: -15px;
+	margin-bottom: 15px;
+}
+.payInfoList .payTop>.yellow{
+	font-size: 25px;
+	margin-top: 10px;
+}
+.payInfoList>input[type=number]{
+	height: 48px;
+	line-height: 30px;
+	font-size: 25px;
+	padding: 9px 10px;
+	background: #ededed;
+	border: none;
+}
+.jflist .rbk-listitem{
+	padding: 0px;
+	font-size: 12px;
+}
+.jflist .panelnr{
+	padding: 15px;
+}
+.flexinfo{
+	display: flex;
+    justify-content: space-between;
+    line-height: 22px;
+    margin-bottom: 5px;
+    align-items: center;
+}
+.flexinfo:last-child{
+	margin-bottom: 0px;
+}
+.flexinfo>div{
+	width: 25%;
+	padding-right: 5px;
+	word-break: break-all;
+}
+.flexinfo>div:first-child{
+	width: 30%;
+}
+.flexinfo>div:nth-child(3){
+	text-align: center;
+	width: 20%;
+}
+.flexinfo>div:last-child{
+	text-align: right;
+	padding: 0px;
+}
+.cytop{
+	text-align: center;
+	margin: -15px;
+	position: relative;
+	margin-bottom: 15px;
+}
+.cytop>img{
+	height: 72px;
+	display: block;
+	margin: 0px auto;
+}
+.border:after{
+	position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0px;
+    height: 1px;
+    content: '';
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    background-color: #e6e6e6;
+}
+.cymoney{
+	text-align: center;
+	line-height: 30px;
+}
+.cymoney .money{
+	font-size: 30px;
+	line-height: 50px;
+}
+.center{
+	text-align: center;
+}
+.payInfoList.center{
+	line-height: 22px;
+}
+.payInfoList.center>[class^=icon]{
+	height: 22px;
+	width: 17px;
+	background: #cccccc;
+	color: #ffffff;
+	font-size: 12px;
+	display: inline-block;
+	line-height: 22px;
+	margin: 0px 10px;
+	border-radius: 3px;
+}
+.disabled{
+	opacity: 0.5;
+}
+.imgs{
+	width: 80%;
+	display: block;
+	margin: 30px auto;
+}
+
+.display-none {
+	display: none;
+}
+
+.paypadding{
+	font-family: PingFangSC-Regular;
+	padding-top: 12px;
+	word-wrap: break-word;
+	white-space: pre-wrap;
+	color: #ff4200;
+	word-break: break-all;
+	text-overflow: ellipsis;
+}

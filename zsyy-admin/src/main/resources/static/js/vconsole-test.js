@@ -1,0 +1,1 @@
+window.vConsole = new window.VConsole();

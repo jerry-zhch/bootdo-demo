@@ -1,0 +1,62 @@
+.payment-cashier {
+    background: #ffffff;
+    margin: 0;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding: 10px 10px;
+    font-size: 15px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 15px 0px;;
+    padding: 0;
+}
+
+ul li {
+    padding-top: 10px;
+    line-height: 30px;
+}
+
+.fontMoney {
+    font-size: 40px;
+    color: #ff6600;
+    padding-left: 13px;
+}
+
+.pt18 {
+    padding-top: 18px;
+    padding-left: 22px;
+}
+
+.payment-info {
+    margin-top: 10px;
+    font-weight: normal;
+}
+
+.payment-info th {
+    font-weight: normal;
+}
+
+.payment-info tr {
+    height: 30px;
+    text-align: left;
+}
+
+.payment-info td {
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.paybtn {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.error-info {
+    font-size: 16px;display: none;
+}

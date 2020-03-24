@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ucmed.common.db.system.mapper.SysMenuMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.ucmed.common.db.system.entity.SysMenu">
+        <id column="menu_id" property="menuId" />
+        <result column="parent_id" property="parentId" />
+        <result column="name" property="name" />
+        <result column="url" property="url" />
+        <result column="perms" property="perms" />
+        <result column="type" property="type" />
+        <result column="icon" property="icon" />
+        <result column="order_num" property="orderNum" />
+        <result column="gmt_create" property="gmtCreate" />
+        <result column="gmt_modified" property="gmtModified" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        menu_id, parent_id, name, url, perms, type, icon, order_num, gmt_create, gmt_modified
+    </sql>
+
+    <select id="get" resultMap="BaseResultMap">
+        select
+        `menu_id`,`parent_id`,`name`,`url`,`perms`,`type`,`icon`,`order_num`,`gmt_create`,`gmt_modified`
+        from sys_menu where menu_id = #{value}
+    </select>
+
+    <select id="list" resultMap="BaseResultMap">
+        select
+        `menu_id`,`parent_id`,`name`,`url`,`perms`,`type`,`icon`,`order_num`,`gmt_create`,`gmt_modified`
+        from sys_menu
+        <where>
+            <if test="menuId != null and menuId != ''"> and menu_id = #{menuId} </if>
+            <if test="parentId != null and parentId != ''"> and parent_id = #{parentId} </if>
+            <if test="name != null and name != ''"> and name = #{name} </if>
+            <if test="url != null and url != ''"> and url = #{url} </if>
+            <if test="perms != null and perms != ''"> and perms = #{perms} </if>
+            <if test="type != null and type != ''"> and type = #{type} </if>
+            <if test="icon != null and icon != ''"> and icon = #{icon} </if>
+            <if test="orderNum != null and orderNum != ''"> and order_num = #{orderNum} </if>
+            <if test="gmtCreate != null and gmtCreate != ''"> and gmt_create = #{gmtCreate} </if>
+            <if test="gmtModified != null and gmtModified != ''"> and gmt_modified = #{gmtModified} </if>
+        </where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+            <otherwise>
+                order by menu_id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="count" resultType="int">
+        select count(*) from sys_menu
+        <where>
+            <if test="menuId != null and menuId != ''"> and menu_id = #{menuId} </if>
+            <if test="parentId != null and parentId != ''"> and parent_id = #{parentId} </if>
+            <if test="name != null and name != ''"> and name = #{name} </if>
+            <if test="url != null and url != ''"> and url = #{url} </if>
+            <if test="perms != null and perms != ''"> and perms = #{perms} </if>
+            <if test="type != null and type != ''"> and type = #{type} </if>
+            <if test="icon != null and icon != ''"> and icon = #{icon} </if>
+            <if test="orderNum != null and orderNum != ''"> and order_num = #{orderNum} </if>
+            <if test="gmtCreate != null and gmtCreate != ''"> and gmt_create = #{gmtCreate} </if>
+            <if test="gmtModified != null and gmtModified != ''"> and gmt_modified = #{gmtModified} </if>
+        </where>
+    </select>
+
+    <insert id="saveData" parameterType="cn.ucmed.common.db.system.entity.SysMenu"
+            useGeneratedKeys="true" keyProperty="menuId">
+        insert into sys_menu
+        (
+        `parent_id`,
+        `name`,
+        `url`,
+        `perms`,
+        `type`,
+        `icon`,
+        `order_num`,
+        `gmt_create`,
+        `gmt_modified`
+        )
+        values
+        (
+        #{parentId},
+        #{name},
+        #{url},
+        #{perms},
+        #{type},
+        #{icon},
+        #{orderNum},
+        #{gmtCreate},
+        #{gmtModified}
+        )
+    </insert>
+
+    <update id="update" parameterType="cn.ucmed.common.db.system.entity.SysMenu">
+        update sys_menu
+        <set>
+            <if test="parentId != null">`parent_id` = #{parentId}, </if>
+            <if test="name != null">`name` = #{name}, </if>
+            <if test="url != null">`url` = #{url}, </if>
+            <if test="perms != null">`perms` = #{perms}, </if>
+            <if test="type != null">`type` = #{type}, </if>
+            <if test="icon != null">`icon` = #{icon}, </if>
+            <if test="orderNum != null">`order_num` = #{orderNum}, </if>
+            <if test="gmtCreate != null">`gmt_create` = #{gmtCreate}, </if>
+            <if test="gmtModified != null">`gmt_modified` = #{gmtModified}</if>
+        </set>
+        where menu_id = #{menuId}
+    </update>
+
+    <delete id="remove">
+        delete from sys_menu where menu_id = #{value}
+    </delete>
+
+    <delete id="batchRemove">
+        delete from sys_menu where menu_id in
+        <foreach item="menuId" collection="array" open="(" separator=","
+                 close=")">
+            #{menuId}
+        </foreach>
+    </delete>
+
+    <select id="listMenuByUserId" resultMap="BaseResultMap">
+        SELECT DISTINCT
+            m.menu_id,
+            m.parent_id,
+            m.NAME,
+            m.url,
+            m.perms,
+            m.type,
+            m.icon,
+            m.order_num,
+            m.gmt_create,
+            m.gmt_modified
+        FROM
+            sys_menu m
+        LEFT JOIN sys_role_menu rm ON m.menu_id = rm.menu_id
+        LEFT JOIN sys_user_role ur ON rm.role_id = ur.role_id
+        LEFT JOIN sys_role u ON ur.role_id = u.role_id
+        WHERE
+            ur.user_id = #{id}
+        AND u.hospital_id = #{hospitalId}
+        AND m.type IN (0, 1)
+        ORDER BY
+            m.order_num
+    </select>
+
+    <select id="listUserPerms" resultType="string">
+        SELECT DISTINCT
+            m.perms
+        FROM
+            sys_menu m
+        LEFT JOIN sys_role_menu rm ON m.menu_id = rm.menu_id
+        LEFT JOIN sys_user_role ur ON rm.role_id = ur.role_id
+        LEFT JOIN sys_role u ON ur.role_id = u.role_id
+        WHERE
+            ur.user_id = #{id}
+        AND u.hospital_id = #{hospitalId}
+    </select>
+
+</mapper>

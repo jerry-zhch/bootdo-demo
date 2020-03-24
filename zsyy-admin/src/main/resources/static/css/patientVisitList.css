@@ -1,0 +1,201 @@
+/*暂时没有办法获取伪类元素，所以不能在js里改*/
+.rbk-tips:before {
+    display: none
+}
+
+.rbk-table-view-cell:after {
+    opacity: 0;
+}
+
+.userifitem-space {
+    padding-left: 20%;
+}
+
+.cerrightgo {
+    left: 232px;
+}
+
+.icon-sexage {
+    position: absolute;
+    margin-left: -25px;
+    width: 16px;
+}
+
+.half-circle-top {
+    top: 3px;
+    margin-left: 8.5%;
+    display: none;
+}
+
+.half-circle-bottom {
+    top: 100%;
+    margin-left: 8.5%;
+    display: none;
+}
+
+span {
+    letter-spacing: 1px;
+    color: #666666;
+}
+
+.qrcode {
+    width: 56px;
+    height: 56px;
+    margin-left: 21px;
+    margin-right: 21px;
+    margin-top: 4px;
+}
+
+@media (max-width: 375px) {
+    .qrcode {
+        width: 56px;
+        height: 56px;
+        margin-left: 21px;
+        margin-right: 21px;
+        margin-top: 4px;
+    }
+
+    .half-circle {
+        margin-left: 7.5%;
+    }
+}
+
+@media (min-width: 411px) {
+    .qrcode {
+        width: 56px;
+        height: 56px;
+        margin-left: 41px;
+        margin-right: 41px;
+        margin-top: 4px;
+    }
+
+    .half-circle {
+        margin-left: 7.5%;
+    }
+}
+
+@media (width: 320px) {
+    .cerrightgo {
+        left: 180px;
+    }
+
+    .icon-sexage {
+        margin-left: -19px;
+    }
+
+    .half-circle {
+        margin-left: 9.5%;
+    }
+}
+
+@media (width: 360px) {
+    .qrcode {
+        width: 56px;
+        height: 56px;
+        margin-left: 15px;
+        margin-right: 15px;
+        margin-top: 4px;
+    }
+}
+
+@media (min-width: 393px) {
+    .qrcode {
+        width: 56px;
+        height: 56px;
+        margin-left: 30px;
+        margin-right: 200px;
+        margin-top: 4px;
+    }
+
+    .half-circle {
+        margin-left: 8%;
+    }
+}
+
+@media (min-width: 414px) {
+    .qrcode {
+        width: 56px;
+        height: 56px;
+        margin-left: 41px;
+        margin-right: 41px;
+        margin-top: 4px;
+    }
+}
+
+@media (min-width: 768px) {
+    .qrcode {
+        width: 56px;
+        height: 56px;
+        margin-left: 41px;
+        margin-right: 200px;
+        margin-top: 4px;
+    }
+
+    .half-circle {
+        margin-left: 4%;
+    }
+
+    .cerrightgo {
+        left: 300px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .qrcode {
+        width: 56px;
+        height: 56px;
+        margin-left: 41px;
+        margin-right: 200px;
+        margin-top: 4px;
+    }
+
+    .half-circle {
+        margin-left: 3%;
+    }
+
+    .cerrightgo {
+        left: 300px;
+    }
+}
+
+.display-none {
+    display: none
+}
+
+.patient-name {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: PingFang-SC-Medium;
+}
+
+.rbk-black-div {
+    border-bottom: 5px solid #f0f3f5;
+}
+
+.circle-img {
+    ransform: translate(150%, -200%);
+    width: 20px;
+}
+
+.rbk-fixbtn-div {
+    display: none;
+    background: #f0f3f5;
+    border-color: #f0f3f5;
+}
+
+.icon-box{
+    display: inline-block;
+    position: absolute;
+    padding-left: 10px;
+}
+.health-card-icon{
+    display: inline-block;
+    width: 60px;
+}
+.text-box {
+    position: relative;
+}
+.inner-text {
+    display: inline-block;
+    overflow: hidden;
+}

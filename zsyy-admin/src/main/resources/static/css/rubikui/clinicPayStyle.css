@@ -1,0 +1,869 @@
+body {
+    background: #f6f6f6 !important;
+}
+.paylist{
+    font-size: 12px;
+    line-height: 25px;
+    margin-bottom: -7px;
+    position: relative;
+}
+.paytop{
+    height: 38px;
+    margin-top: -15px;
+    line-height: 38px;
+    position: relative;
+    margin-right: -15px;
+}
+.paytop:after{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0px;
+    height: 1px;
+    content: '';
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    background-color: #e6e6e6;
+}
+
+.paystate{
+    color: #ff4200;
+    position: absolute;
+    right: 32px;
+    top: 0px;
+}
+.disabled{
+    color: #c2c2c2
+}
+.lite{
+    color: #8f8f8f;
+}
+.dept{
+    padding-top: 16px;
+    font-size: 17px;
+    color: #333333;
+    letter-spacing: 0.21px;
+    font-weight: bold;
+}
+.dept-apart{
+    font-size: 15px;
+    color: #333333 ;
+    letter-spacing: 0.21px;
+    text-align: left;
+    border: none ;
+    font-weight: normal;
+}
+.deptClinicType {
+    font-size: 12px;
+    color: #fff;
+    letter-spacing: 0.21px;
+    text-align: left;
+    border: none;
+    font-weight: normal;
+    background: #22a7f0;
+    border-radius: 4px;
+    padding: 2px;
+    top: -1px;
+    position: relative;
+}
+/*.payTime:before{*/
+/*font-family: 'rbkmark';*/
+/*content: '\e908';*/
+/*margin-right: 5px;*/
+/*position: relative;*/
+/*top: 1px;*/
+/*}*/
+
+.dept-state {
+    padding: 2px;
+    font-size: 12px;
+    color: #FFFFFF;
+    letter-spacing: 0.2px;
+    text-align: left;
+    background: #FF5F4E 100%;
+    border-radius: 2px;
+    top: -2px;
+    left: 8px;
+    position: relative;
+}
+.patientName{
+    padding-top: 9px;
+}
+.patientName:before {
+    font-family: 'rbkmark';
+    content: '\e912';
+    margin-right: 5px;
+    position: relative;
+    top: 1px;
+}
+.paybtn{
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+    bottom: 2px;
+}
+.paybtn>button{
+    display: block;
+    margin-top: 10px;
+    color: #8f8f8f;
+    display: none;
+}
+.paybtn>button.true{
+    display: block;
+}
+button.bluebtn{
+    border: #22a7f0 solid 1px;
+    color: #22a7f0;
+}
+button.bluebtn:active{
+    background: #D3E3EC;
+    color: #22a7f0;
+}
+.infoTop{
+    height: 65px;
+    background: #1c98fc;
+    color: #FFFFFF;
+    padding: 15px;
+    line-height: 35px;
+    position: relative;
+    font-size: 14px;
+}
+.topType{
+    position: absolute;
+    right: 53px;
+    top: 15px;
+
+}
+.topType:after{
+    font-family: 'rbkmark';
+    height: 30px;
+    width: 30px;
+    background: #FFFFFF;
+    border-radius: 50%;
+    display: inline-block;
+    color: #1c98fc;
+    text-align: center;
+    line-height: 30px;
+    font-size: 18px;
+    position: absolute;
+    top: 1px;
+    right: -38px;
+}
+.topType.jficon:after{
+    content: '\e932';
+}
+.topType.jcicon:after{
+    content: '\e923';
+}
+.topType.ypicon:after{
+    content: '\e931';
+}
+.topType.yyicon:after{
+    content: '\e92e';
+}
+.payInfoList{
+    background: #FFFFFF;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+.payInfoList>label{
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: normal;
+    display: flex;
+}
+.payInfoList.money>label{
+    padding-left: 125px;
+}
+.payInfoList.drug>label{
+    padding-left: 0px;
+}
+.payInfoList.money>label:first-child{
+    color: #ffae36;
+}
+.payInfoList>label>span{
+    left: 0px;
+    top: 0px;
+    color: #8f8f8f;
+}
+
+.clinicMed {
+    border-top: 1px solid #e2e2e2;
+    padding-top: 12px;
+    width: 100%;
+}
+
+.payInfoListTittle{
+    display: inline-block;
+    bottom: 9px;
+    position: relative;
+}
+
+.payInfoList>.paytitle{
+    color: #8F8F8F;
+    font-size: 14px;
+    margin-top: -5px;
+    margin-right: -15px;
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+.payInfoList>.paytitle [class^=icon-]{
+    position: relative;
+    top: 1px;
+    margin-right: 5px;
+    font-size: 15px;
+}
+.payInfoList>.paytitle:after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0px;
+    height: 1px;
+    content: '';
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    background-color: #e6e6e6;
+}
+.mainInfo{
+    margin-bottom: 20px;
+    text-align: left;
+}
+.mainInfo>label{
+    display: block;
+    color: #8f8f8f;
+    line-height: 30px;
+    display: block;
+    text-align: center;
+}
+.btnlist{
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.btnlist>button{
+    width: 45%;
+    position: relative;
+}
+.btnlist>button:active{
+    background: #FFFFFF;
+    color: #333333;
+}
+.btnlist>button.current{
+    border: #1c98fc solid 1px;
+    overflow: hidden;
+}
+.btnlist>button.current:before{
+    font-family: 'rbkmark';
+    content: '\e907';
+    position: absolute;
+    right: -1px;
+    top: -2px;
+    color: #1c98fc;
+}
+.topspace{
+    margin-top: 8px;
+    display: block;
+}
+.rightgo{
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.icon-sexboy{
+    color: #9dc1f7;
+}
+.icon-sexgirl{
+    color: #ffb1c6;
+}
+.labelleft{
+    display: inline-block;
+    width: 60px;
+}
+.rightgo b{
+    font-size: 20px;
+    font-weight: normal;
+}
+.payInfoList .payTop{
+    position: relative;
+    margin-right: -15px;
+    margin-bottom: 15px;
+}
+.payInfoList .payTop>.yellow{
+    font-size: 25px;
+    margin-top: 10px;
+}
+.payInfoList>input[type=number]{
+    height: 48px;
+    line-height: 30px;
+    font-size: 25px;
+    padding: 9px 10px;
+    background: #ededed;
+    border: none;
+}
+.jflist .rbk-listitem{
+    padding: 0px;
+    font-size: 12px;
+}
+.jflist .panelnr{
+    padding: 15px;
+}
+.flexinfo{
+    display: flex;
+    justify-content: space-between;
+    line-height: 22px;
+    margin-bottom: 5px;
+    align-items: center;
+}
+.flexinfo:last-child{
+    margin-bottom: 0px;
+}
+.flexinfo>div{
+    width: 25%;
+    padding-right: 5px;
+    word-break: break-all;
+}
+.flexinfo>div:first-child{
+    width: 30%;
+}
+.flexinfo>div:nth-child(3){
+    text-align: center;
+    width: 20%;
+}
+.flexinfo>div:last-child{
+    text-align: right;
+    padding: 0px;
+}
+.cytop{
+    text-align: center;
+    margin: -15px;
+    position: relative;
+    margin-bottom: 15px;
+}
+.cytop>img{
+    height: 72px;
+    display: block;
+    margin: 0px auto;
+}
+.border:after{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0px;
+    height: 1px;
+    content: '';
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    background-color: #e6e6e6;
+}
+.cymoney{
+    text-align: center;
+    line-height: 30px;
+}
+.cymoney .money{
+    font-size: 30px;
+    line-height: 50px;
+}
+.center{
+    text-align: center;
+}
+.payInfoList.center{
+    line-height: 22px;
+}
+.payInfoList.center>[class^=icon]{
+    height: 22px;
+    width: 17px;
+    background: #cccccc;
+    color: #ffffff;
+    font-size: 12px;
+    display: inline-block;
+    line-height: 22px;
+    margin: 0px 10px;
+    border-radius: 3px;
+}
+.disabled{
+    opacity: 0.5;
+}
+.imgs{
+    width: 80%;
+    display: block;
+    margin: 30px auto;
+}
+
+.display-none {
+    display: none;
+}
+
+.paypadding{
+    padding-top: 12px;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    color: #ff4200;
+    /* word-break: break-word; */
+    word-break: break-all;
+    text-overflow: ellipsis;
+}
+
+.patient-border {
+    background: #FFF0E6;
+}
+.rbk-segmented-control {
+    margin-bottom: 0px;
+    border-bottom: 1px #E2E2E2  solid;
+    position: relative;
+}
+
+.rbk-segmented-control .rbk-control-item{
+    font-size: 15px;
+}
+
+.clinic-apart {
+    padding-top: 16px;
+    border-bottom: 1px #E2E2E2  dashed;
+}
+
+.clinicPayfee {
+    font-size: 15px;
+    color: #333333;
+    letter-spacing: 0.2px;
+}
+
+.totalPrice {
+    padding-top: 12px;
+    float: left;
+}
+.cur-pay {
+    float: right;
+    padding-top: 8px;
+    display: inline-block;
+    position: relative;
+}
+
+.cur-pay > button {
+    background: #FF7B35;
+    border-radius: 4px;
+    display: inline;
+    font-size: 14px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+.dept-name {
+    padding-left: 0px !important;
+    font-size: 20px;
+    color: #333333;
+    letter-spacing: 0.2px;
+    text-align: center;
+}
+
+.dept-date{
+    font-size: 16px;
+    color: #333333;
+    padding-top: 8px;
+    letter-spacing: 0.2px;
+    text-align: center;
+}
+.dept-item {
+    display: inline-block;
+}
+.dept-message {
+    float: right;
+    display: inline-block;
+    width: 50%;
+    text-align: right;
+}
+
+
+.dept-message-title {
+    width: 50%;
+    display: inline;
+}
+
+
+.paytitle > h4 {
+    display: inline-block;
+    font-size: 16px !important;
+    color: #333333 !important;
+    letter-spacing: 0.2px;
+    top: -9px;
+    position: relative;
+}
+
+.payInfoList>.paytitle {
+    padding-bottom: 0px;
+}
+
+.clinicDeptList {
+    top: 10px
+}
+
+.icon-clinic {
+    width: 30px;
+    height: 30px;
+}
+
+.paydiv .rbk-btn {
+    margin: 0;
+    border-radius: 4px;
+    border: none;
+    display: inline-block;
+    width: 150px;
+    height: 46px;
+    position: absolute;
+    right: 14px;
+    top: 8px;
+}
+
+.rbk-fixbtn {
+    padding: 7px;
+    z-index: 99999;
+
+}
+
+.btn-price {
+    font-size: 13px;
+    left: 8px;
+    position: relative
+}
+
+.medInfoPrice {
+    position: absolute;
+    right: 0px;
+}
+
+.medInfoUnit {
+    font-size: 14px;
+    color: #888888;
+    letter-spacing: 0.2px;
+    text-align: right;
+}
+
+.prescriptionTotalFee{
+    font-size: 14px;
+    color: #666666;
+    letter-spacing: 0.17px;
+    border-top: 1px dashed #E2E2E2 ;
+    margin-top: 15px;
+    padding-bottom: 20px;
+}
+.prescriptionTotalFee span {
+    position: relative;
+    top: 10px;
+    font-size: 14px;
+    color: #666666;
+}
+
+.prescriptionTotalFee span:last-child {
+    font-size: 16px;
+    color: #FF7B35;
+    letter-spacing: 0.23px;
+    text-align: right;
+    float: right;
+}
+
+.prescriptions-desripton {
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: normal;
+    display: flex;
+    position: relative;
+    top: 10px;
+    margin-bottom: 10px;
+}
+
+.prescriptionName {
+    display: inline-block;
+    font-size: 16px;
+    color: #333333;
+    letter-spacing: 0.2px;
+    position: relative;
+    margin-top: 10px;
+}
+
+.clinicPaySuccessTop {
+    padding: 20px 0px 20px;
+    background: #fff;
+    text-align: center;
+}
+
+.clinicPaySuccessTop img {
+    width: 26px;
+    height: 26px;
+    position: relative;
+}
+
+.clinicPaySuccess {
+    bottom: 6px;
+    position: relative;
+    font-size: 17px;
+    color: #2FB727;
+    letter-spacing: 0.2px;
+}
+
+.clinicPaySuccessInfo {
+    line-height: 15px;
+    position: relative;
+}
+
+.clinicPayContentInfo {
+    background: #fff;
+    margin-top: 8px;
+    overflow: auto;
+    padding-bottom: 20px;
+}
+
+.clinicPayContentInfo h4{
+    text-align:  center;
+    padding-top: 20px;
+}
+.clinicPayContentInfo p{
+    text-align:  center;
+}
+/*.clinicPaySuccessInfo {*/
+/*left: 18.7%;*/
+/*bottom: 30px;*/
+/*position: relative;*/
+/*}*/
+
+.clinicPayData {
+    display: inherit;
+    font-size: 16px;
+    color: #666666;
+    letter-spacing: 0.2px;
+    margin-left: 14px;
+    line-height: 25px;
+}
+
+.clinic-pay-value {
+    float: right;
+    margin-right: 14px;
+}
+
+.clinic-pay-border-apart {
+    border: .5px solid #e2e2e2;
+    width: 95%;
+    margin: 10px;
+}
+
+.paySuccessButton {
+    position: fixed;
+    bottom: 0px;
+    padding: 15px 0px;
+    width: 100%;
+    background: #ffff;
+    z-index: 10;
+}
+
+.clinicOrderDetailButton {
+    margin-top: 7px;
+    background: #fff;
+    width: 44.5%;
+    height: 46px;
+    margin-bottom: 8px;
+    font-size: 17px;
+    color: #333333;
+    text-align: center;
+    margin-left: 14px;
+}
+
+.clinicSuccessButton {
+    margin-top: 7px;
+    float: right;
+    width: 44.8%;
+    height: 46px;
+    margin-right: 8px;
+    font-size: 17px;
+    color: #FFFFFF;
+    background: #1C97FC;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.clinic-order-btn-group {
+    background: rgb(255, 255, 255);
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+}
+.clinic-aaaa{
+    position: relative;
+    height: 100%;
+}
+.clinic-tttt{
+    position: relative;
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin-bottom: 55px;
+}
+
+.clinic-hide {
+    display: none;
+}
+
+.mediacalName {
+    word-break: break-all;
+    align-items: left;
+    width: 70%;
+}
+
+.mediacalArea{
+    font-size: 16px;
+    line-height: 25px;
+    display: none;
+}
+
+.payment-status-handle {
+    position: relative;
+    padding-bottom: 10px;
+}
+.payment-status-handle .status-start {
+    margin: 20px 23.2% 0;
+    background: #00c07c;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    width: 8px;
+    height: 8px;
+    box-shadow: 0px 0px 10px #D0EEE4
+}
+
+.payment-status-handle .status-start  .status-left {
+    width: 90px;
+    height: 3px;
+    top: 3px;
+    left: 7px;
+    background: #00C07C;
+    position: relative;
+}
+
+.payment-status-handle .status-start  .status-right {
+    width: 90px;
+    height: 3px;
+    left: 97px;
+    background: #E2E2E2;
+    position: relative;
+}
+.payment-status-handle .status-start  .status-right[type='success'] {
+    background: #00C07C;
+}
+
+.payment-status-handle .status-start  .status-right[type='fail'] {
+    background: #FE6E35;
+}
+
+.payment-status-handle .status-start .status-end {
+    background: #E2E2E2;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    width: 8px;
+    height: 8px;
+    margin-left: 186px;
+    margin-top: -6px;
+}
+
+.payment-status-handle .status-start  .status-end[type='success'] {
+    background: #00C07C;
+}
+.payment-status-handle .status-start  .status-end[type='fail'] {
+    background: #FE6E35;
+}
+
+
+.payment-status-handle .status-data {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #999999;
+    letter-spacing: 0.17px;
+    display: flex;
+    align-content: space-around;
+    justify-content: space-around;
+}
+
+
+.payment-status-handle .status-data .left {
+    text-align: center;
+}
+
+.payment-status-handle .status-data .left p:last-child {
+    color: #333;
+}
+
+.payment-status-handle .status-data .left p {
+    margin: 0;
+    font-size: 12px;
+}
+
+.payment-status-handle .status-data .right {
+    text-align: center;
+}
+
+
+.payment-status-handle .status-data .right p {
+    margin: 0;
+    font-size: 12px;
+}
+
+.payment-status-handle .status-data .right p:last-child {
+    color: #333;
+}
+
+.payment-status-handle .status-data .right p[type="fail"] {
+    color: #FE6E35;
+}
+
+#payInfo .notice-info{
+    font-size:14px;
+
+}
+.main-content{
+    padding-bottom: 50px!important;
+}
+.bottom-box{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+    border-top: 1px solid #E2E2E2;
+}
+.left-info {
+    float: left;
+    padding-left: 16px;
+    padding-top: 15px;
+}
+.select-all-text{
+    color: #111;
+}
+.total-price {
+    padding-left: 10px;
+    color: #666666;
+}
+.price-num {
+    font-size: 19px;
+    color: #FF7B35;
+}
+.money{
+    font-size: 13px;
+    color: #FF7B35;
+}
+.toPay {
+    float: right;
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    font-size: 17px;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    background-color: #FF7B35;
+    border-radius: 4px;
+}
+input[type=checkbox]{
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+}

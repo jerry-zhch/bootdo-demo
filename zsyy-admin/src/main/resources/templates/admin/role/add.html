@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:include="include::header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content animated fadeInRight" id="add">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+							<div class="form-group">
+								<label class="col-sm-3 control-label"><span style="color: red">*</span>角色名：</label>
+								<div class="col-sm-8">
+									<input id="roleName" v-model="sysRole.roleName" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">备注：</label>
+								<div class="col-sm-8">
+									<input id="remark" v-model="sysRole.remark" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label"><span style="color: red">*</span>菜单权限：</label>
+								<div class="col-sm-8">
+									<div id="menuTree"></div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="button" class="btn btn-primary" @click="save">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script th:inline="javascript" type="text/javascript">
+		var add = new Vue({
+			el: '#add',
+			data: {
+				sysRole: {
+					roleName: '',
+					remark: '',
+					menuIds: []
+				},
+			},
+			created: function () {
+
+			},
+			mounted: function () {
+				this.getMenuTreeData();
+			},
+			methods: {
+				/**
+				 * 获得整个树
+				 */
+				getAllSelectNodes: function() {
+					var _this = this;
+					var ref = $('#menuTree').jstree(true); // 获得整个树
+					_this.sysRole.menuIds = ref.get_selected(); // 获得所有选中节点的，返回值为数组
+					$("#menuTree").find(".jstree-undetermined").each(function(i, element) {
+						_this.sysRole.menuIds.push($(element).closest('.jstree-node').attr("id"));
+					});
+				},
+
+				getMenuTreeData: function() {
+					var _this = this;
+					$.ajax({
+						type : "GET",
+						url : "/admin/sys-menu/tree",
+						success : function(menuTree) {
+							_this.loadMenuTree(menuTree);
+						}
+					});
+				},
+				loadMenuTree: function(menuTree) {
+					$('#menuTree').jstree({
+						'core' : {
+							'data' : menuTree
+						},
+						"checkbox" : {
+							"three_state" : true,
+						},
+						"plugins" : [ "wholerow", "checkbox" ]
+					});
+				},
+				/**
+				 * 保存
+				 */
+				save: function () {
+					var _this = this;
+					_this.sysRole.hospitalName = $("#hospitalId").find("option:selected").text();
+					_this.getAllSelectNodes();
+					if(_this.sysRole.roleName == null || _this.sysRole.roleName == '') {
+						parent.layer.alert("请输入角色名");
+						return false;
+					}
+					if(_this.sysRole.menuIds == null || _this.sysRole.menuIds == '') {
+						parent.layer.alert("请选择权限");
+						return false;
+					}
+					$.ajax({
+						cache : true,
+						type : "POST",
+						url : "/admin/sys-role/save",
+						contentType: "application/json",
+						data: JSON.stringify(_this.sysRole),
+						async : false,
+						success : function(data) {
+							if (data.code == 200) {
+								parent.layer.msg("操作成功");
+								parent.reLoad();
+								var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
+								parent.layer.close(index);
+							} else {
+								parent.layer.msg(data.message);
+							}
+						},
+						error : function(request) {
+							alert("Connection error");
+						}
+					});
+				}
+			}
+		})
+	</script>
+</body>
+</html>

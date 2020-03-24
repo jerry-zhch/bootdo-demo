@@ -1,0 +1,544 @@
+.add-btn-wrapper{
+    background-color: #f0f3f5;
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    /*left: 50%;*/
+    /*transform: translateX(-50%);*/
+    padding: 12px 0px;
+}
+.add-btn {
+    display: inline-block;
+    width: 90%;
+    text-align: center;
+    background-color: #1c97fc;
+    color: #fff;
+    border: 1px solid #1c97fc;
+    height: 46px;
+    line-height: 46px;
+    border-radius: 5px;
+}
+.addHeathCard{
+    background-color: #fff;
+    color: #1c97fc;
+}
+.blue-bgc{
+    background-color: #1c97fc;
+    color: #fff;
+}
+.has2But{
+    width: 45%!important;
+}
+.patient-list{
+    margin-bottom: 90px!important;
+}
+
+.rbk-segmented-control .rbk-control-item span{
+    font-size: 14px!important;
+    /*font-weight: 100!important;*/
+    font-weight: 500;
+    color: #444;
+}
+.display-none {
+    display: none;
+}
+.doctor-detail-div {
+    background-color: #ffffff;
+    border: #f0f2f5 solid 1px;
+    padding: 12px;
+    display: none;
+}
+
+.defaultTipsValue {
+    display: none;
+    text-align: center;
+    margin-top: -50px;
+    color: #858da0;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 18px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.department-introduction {
+    background-color: #ffffff;
+    border: #f0f2f5 solid 1px;
+    padding: 12px;
+    display: none;
+}
+
+.col-md-4-span {
+    position: relative;
+    padding-left: 60px;
+    height: 18px
+}
+
+.doctor-name {
+    position: absolute;
+    left: 0;
+}
+.name{
+    font-size: 17px;
+    font-weight: bold;
+}
+.lite{
+    font-size: 14px;
+    color: #333;
+}
+.col-md-2-span {
+    text-align: right;
+    padding-right: 16px
+}
+
+.col-md-2-lite-span {
+    text-align: right;
+    padding-right: 20px;
+    float: right;
+}
+
+.col-md-2-1-span {
+    text-align: right;
+    padding-right: 20px
+}
+
+.default-img {
+    display: none;
+    width: 100%
+}
+
+.ampmlist {
+    margin-top: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ampminfo {
+    display: inline-block;
+    width: 46%;
+    text-align: center;
+}
+
+.pay-fee-div {
+    margin: 30px 3%;
+    font-size: smaller;
+}
+
+.pay-fee-b {
+    float: right;
+    font-size: 36px;
+    color: red;
+}
+
+.pay-fee-div-2 {
+    height: 120px;
+    padding: 0 15px;
+}
+
+.pay-btn {
+    disabled: false;
+    display: none;
+}
+
+.wxpay-li {
+    display: none;
+    position: relative;
+    padding-left: 50px;
+    text-align: left
+}
+
+.wxpay-li-img {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+}
+
+.wxpay-li-span {
+    line-height: 30px;
+    color: black;
+}
+
+.advance-detail-tb .prescriptions-tb .medical-details-tb {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.advance-detail-tb tr td:nth-child(1) {
+    color: #8f8f94;
+}
+
+.advance-detail-tb tr td:nth-child(2) {
+    padding-left: 60px;
+}
+
+.patient-tb {
+    border-collapse: separate;
+    border-spacing: 0px 10px;
+    font-size: 14px;
+}
+
+.patient-tb tr td:nth-child(1) {
+    color: #8f8f94;
+}
+
+.patient-tb tr td:nth-child(2) {
+    padding-left: 40px;
+}
+
+.paylimit-div {
+    display: none;
+    font-size: 12px;
+    position: relative;
+    top: -10px;
+}
+
+.icon-back-color {
+    background: #0a95cc !important;
+    height: 22px;
+    width: 17px;
+    color: #ffffff;
+    font-size: 12px;
+    display: inline-block;
+    line-height: 22px;
+    margin: 0px 10px;
+    border-radius: 3px;
+}
+
+.pay-fee-btn {
+    border: #22a7f0 solid 1px;
+}
+
+.rbk-space .rbk-listitem.cardlistitem {
+    background: url("/images/cardbg.png") top left no-repeat;
+    position: relative;
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+
+.cardtitle:after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 0px;
+    padding-bottom: 15.13%;
+    background: url("/images/cardbg1.png") top left no-repeat;
+    right: 0px;
+    bottom: 0px;
+    background-size: 100%;
+}
+
+.cardtitle {
+    font-weight: bold;
+    line-height: 35px;
+    font-size: 16px;
+    color: #fff;
+    margin: -15px -15px 10px -15px;
+    text-align: center;
+    border-bottom: #fff solid 4px;
+    padding-top: 4px;
+}
+
+.carditem {
+    font-size: 14px;
+    color: #fff;
+    opacity: 0.8;
+    line-height: 25px;
+}
+
+.carditem > span:last-child {
+    float: right;
+}
+
+.patient-div {
+    display: none;
+    font-size: 14px;
+    padding: 10px;
+    margin: 0px
+}
+
+.prescriptions-tb tr td:nth-child(1) {
+    color: #8f8f8f;
+}
+
+.prescriptions-name {
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+
+.other-info {
+    position: relative;
+    left: 70px;
+}
+
+.contact-way-input {
+    font-size: 14px;
+    color: #8f8f8f
+}
+
+.rbk-subtitle-div {
+    background: #f0f3f5;
+    font-size: 12px;
+    color: #8f8f8f;
+}
+
+.rbk-list-div {
+    padding-left: 12px;
+    padding-bottom: 12px;
+}
+
+.prescriptions-div {
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.drug-money {
+    position: absolute;
+    right: 15px;
+    top: 30px;
+    font-size: 16px;
+}
+
+.prescriptions-img {
+    width: 60%;
+    margin: 30px 0 0 20%;
+}
+
+.germ-name {
+    margin-left: 4%;
+    color: #22a7f0;
+    font-size: small;
+}
+
+.result-description {
+    line-height: 22px;
+    font-size: 14px;
+    color: #3d3d3d
+}
+
+.patient-visit-tips {
+    margin-top: -15px;
+    display: none
+}
+
+.search-patient-btn {
+    border: #22a7f0 solid 1px;
+}
+
+.patient-name {
+    font-size: 16px;
+    width: 100px
+}
+
+.min-height-78 {
+    min-height:78px;
+}
+
+.payment-status-handle {
+    position: relative;
+    padding-bottom: 10px;
+}
+.payment-status-handle .status-start {
+    margin: 20px 23.2% 0;
+    background: #00c07c;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    width: 8px;
+    height: 8px;
+    box-shadow: 0px 0px 10px #D0EEE4
+}
+
+.payment-status-handle .status-start  .status-left {
+    width: 90px;
+    height: 3px;
+    top: 3px;
+    left: 7px;
+    background: #00C07C;
+    position: relative;
+}
+
+.payment-status-handle .status-start  .status-right {
+    width: 90px;
+    height: 3px;
+    left: 97px;
+    background: #E2E2E2;
+    position: relative;
+}
+.payment-status-handle .status-start  .status-right[type='success'] {
+    background: #00C07C;
+}
+
+.payment-status-handle .status-start  .status-right[type='fail'] {
+    background: #FE6E35;
+}
+
+.payment-status-handle .status-start .status-end {
+    background: #E2E2E2;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    width: 8px;
+    height: 8px;
+    margin-left: 186px;
+    margin-top: -6px;
+}
+
+.payment-status-handle .status-start  .status-end[type='success'] {
+    background: #00C07C;
+}
+.payment-status-handle .status-start  .status-end[type='fail'] {
+    background: #FE6E35;
+}
+
+
+.payment-status-handle .status-data {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #999999;
+    letter-spacing: 0.17px;
+    display: flex;
+    align-content: space-around;
+    justify-content: space-around;
+}
+
+
+.payment-status-handle .status-data .left {
+    text-align: center;
+}
+
+.payment-status-handle .status-data .left p:last-child {
+    color: #333;
+}
+
+.payment-status-handle .status-data .left p {
+    margin: 0;
+    font-size: 12px;
+}
+
+.payment-status-handle .status-data .right {
+    text-align: center;
+}
+
+
+.payment-status-handle .status-data .right p {
+    margin: 0;
+    font-size: 12px;
+}
+
+.payment-status-handle .status-data .right p:last-child {
+    color: #333;
+}
+
+.payment-status-handle .status-data .right p[type="fail"] {
+    color: #FE6E35;
+}
+.rbk-content .rbk-resultinfo .infotext{
+    color:#67C23A
+}
+.payment-status-handle .display_none{
+    display: none;
+}
+.rbk-content  .status-box{
+    top:-20px;
+    padding-top: 20px;
+    background: #f9f9f9;
+}
+.icon-box{
+    display: inline-block;
+    position: absolute;
+    padding-left: 10px;
+}
+.health-card-icon{
+    display: inline-block;
+    width: 60px;
+}
+.star{
+    float: left;
+    padding-right: 14px;
+    font-family: SanFranciscoText-BoldItalic;
+    font-size: 16px;
+    color: #FFB700;
+}
+.docphoto{
+    height: 50px;
+}
+.divide-line{
+    padding: 0 10px;
+}
+.rightmoney{
+    float: none;
+    color: #8f8f8f;
+}
+.min-height-85{
+    min-height: 78px;
+}
+
+.hasNoNum{
+    display: inline-block;
+    width: 163px;
+    height: 32px;
+    text-align: center;
+    line-height: 32px;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #8FA9D1;
+}
+.schedul-button{
+    display: inline-block;
+    width: 163px;
+    height: 32px;
+    text-align: center;
+    line-height: 32px;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #FFA54F;
+}
+.mleftf{
+    font-size: 14px;
+}
+.ampmlist{
+    margin-top: 16px;
+    justify-content: flex-start;
+}
+.doclist .docinfo:after{
+    display: none;
+}
+.doctskill{
+    padding-bottom: 6px;
+    margin-right: 14px;
+    border-bottom: 1px dashed #ccc;
+}
+.rbk-table-view-cell{
+    margin-bottom: 8px;
+}
+.rbk-table-view-cell.yining{
+    margin-bottom: 8px;
+    border-bottom: #bda2a2 solid 1px;
+}
+.doct-wrapper{
+    position: relative;
+    font-size: 15px;
+}
+.doct{
+    display: inline-block;
+    width: 90%;
+    color: #333;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.show{
+    position: absolute;
+    right: 0px;
+    color: #3978ff;
+}
+.hide{
+    position: absolute;
+    right: 0px;
+    color: #3978ff;
+    display: none;
+}

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui" />
+	<meta name="format-detection" content="telephone=no"/>
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta charset="utf-8">
+	<title>直播室</title>
+</head>
+<body>
+	<h3 class="h3-theme"><span class="theme" th:text="|主题：${detail.Theme}|"></span></h3>
+	<div class="video-detail" th:each="url,urlStat:${detail.Url}" style="border-bottom:2px solid #000">
+		<video class="vjs-tech" width="100%" height="100%" poster = "/images/logo_2.jpg"
+				controls="controls"
+				x-webkit-airplay="true" x5-video-player-fullscreen="true"
+				preload="auto" playsinline="true" webkit-playsinline
+				x5-video-player-typ="h5">
+			<source type="application/x-mpegURL" th:attr="src=|${url}|">
+		</video>
+		<h4 style="width: 80%;margin-left: 6%;font-size: 1.3rem;margin-top: 4%;margin-bottom: 3%;"><span th:text="|房间：${detail.ClassRoom}-${urlStat.count}|"></span></h4>
+	</div>
+</body>
+<style>
+
+</style>
+</html>

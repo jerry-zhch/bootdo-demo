@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ucmed.common.db.user.mapper.PvUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.ucmed.common.db.user.entity.PvUser">
+        <id column="user_id" property="userId" />
+        <result column="hospital_id" property="hospitalId" />
+        <result column="branch_id" property="branchId" />
+        <result column="source" property="source" />
+        <result column="account" property="account" />
+        <result column="password" property="password" />
+        <result column="security_key" property="securityKey" />
+        <result column="user_name" property="userName" />
+        <result column="phone" property="phone" />
+        <result column="id_card" property="idCard" />
+        <result column="id_card_type" property="idCardType" />
+        <result column="card" property="card" />
+        <result column="card_type" property="cardType" />
+        <result column="address" property="address" />
+        <result column="state" property="state" />
+        <result column="state_descr" property="stateDescr" />
+        <result column="delete_state" property="deleteState" />
+        <result column="tmp1" property="tmp1" />
+        <result column="tmp2" property="tmp2" />
+        <result column="tmp3" property="tmp3" />
+        <result column="wechat" property="wechat" />
+        <result column="ali_user_id" property="aliUserId" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="remark" property="remark" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        user_id, hospital_id, branch_id, source, account, password, security_key, user_name, phone, id_card, id_card_type, card, card_type, address, state, state_descr, delete_state, tmp1, tmp2, tmp3, wechat, ali_user_id, create_time, update_time, remark
+    </sql>
+
+</mapper>

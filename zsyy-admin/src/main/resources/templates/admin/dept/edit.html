@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content animated fadeInRight" id="edit">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+							<div class="form-group">
+								<label class="col-sm-3 control-label ">上级部门：</label>
+								<div class="col-sm-8">
+								<input v-model="parentDeptName" class="form-control" type="text" readonly="true" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label"><span style="color: red">*</span>部门名称：</label>
+								<div class="col-sm-8">
+									<input id="name" name="name" v-model="sysDept.name" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label"><span style="color: red">*</span>排序：</label>
+								<div class="col-sm-8">
+									<input id="orderNum" name="orderNum" v-model="sysDept.orderNum" class="form-control" type="number">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label"><span style="color: red">*</span>状态：</label>
+								<div class="col-sm-8">
+									<select class="form-control" v-model="sysDept.delFlag">
+										<option value="0">禁用</option>
+										<option value="1">正常</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="button" class="btn btn-primary" @click="update">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script th:inline="javascript" type="text/javascript">
+		var edit = new Vue({
+			el: '#edit',
+			data: {
+				parentDeptName: [[${parentDeptName}]],
+				sysDept: [[${sysDept}]]
+			},
+			created: function () {
+			},
+			mounted: function () {
+			},
+			methods: {
+				/**
+				 * 修改
+				 */
+				update: function () {
+					var _this = this;
+					if(_this.sysDept.name == null) {
+						parent.layer.alert("请输入部门名称");
+						return false;
+					}
+					if(_this.sysDept.orderNum == null) {
+						parent.layer.alert("请输入排序");
+						return false;
+					}
+					$.ajax({
+						cache : true,
+						type : "POST",
+						url : "/admin/dept/update",
+						data : _this.sysDept,
+						async : false,
+						success : function(data) {
+							if (data.code == 200) {
+								parent.layer.msg("操作成功");
+								parent.reLoad();
+								var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
+								parent.layer.close(index);
+							} else {
+								parent.layer.alert(data.msg)
+							}
+						},
+						error : function(request) {
+							parent.layer.alert("Connection error");
+						}
+					});
+				}
+			}
+		})
+	</script>
+</body>
+</html>

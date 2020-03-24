@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ucmed.common.db.hospital.mapper.ProjectMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.ucmed.common.db.hospital.entity.Project">
+        <id column="project_id" property="projectId" />
+        <result column="project_name" property="projectName" />
+        <result column="project_type" property="projectType" />
+        <result column="img_url" property="imgUrl" />
+        <result column="createdby" property="createdby" />
+        <result column="createdon" property="createdon" />
+        <result column="modifiedby" property="modifiedby" />
+        <result column="modifiedon" property="modifiedon" />
+        <result column="deletion_state" property="deletionState" />
+        <result column="description" property="description" />
+        <result column="seq" property="seq" />
+        <result column="project_level" property="projectLevel" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        project_id, project_name, project_type, img_url, createdby, createdon, modifiedby, modifiedon, deletion_state, description, seq, project_level
+    </sql>
+
+</mapper>

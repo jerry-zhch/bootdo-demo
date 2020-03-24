@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div id="add" class="wrapper wrapper-content animated fadeInRight">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+							<div class="form-group">
+								<label class="col-sm-3 control-label">区域名字：</label>
+								<div class="col-sm-8">
+									<input id="" name="" class="form-control" type="text" v-model="pName" readonly>
+								</div>
+							</div>
+							<div class="form-group" v-if="record.parentId == 0">
+								<label class="col-sm-3 control-label"><span style="color: red">*</span>区域名称：</label>
+								<div class="col-sm-8">
+									<input  name="hospitalName" v-model="record.hospitalName" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group" v-else>
+								<label class="col-sm-3 control-label"><span style="color: red">*</span>医院名称：</label>
+								<div class="col-sm-8">
+									<input
+											v-model="record.hospitalName" name="hospitalName" class="form-control" type="text"
+											style="cursor: pointer;" placeholder="请选择互联网医院名称">
+								</div>
+							</div>
+							<div class="form-group" v-if="record.parentId != 0">
+								<label class="col-sm-3 control-label"><span style="color: red">*</span>是否为区域HIS：</label>
+								<div class="col-sm-8">
+									<select  class="form-control" v-model="qyHIS">
+										<option value="0">不是</option>
+										<option value="1">是</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group" v-if="record.parentId != 0 && qyHIS == 1">
+								<label class="col-sm-3 control-label"><span style="color: red">*</span>HIS医院id：</label>
+								<div class="col-sm-8">
+									<input id="hisHospitalId" name="hisHospitalId" v-model="record.hisHospitalId" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label"><span style="color: red">*</span>所属项目：</label>
+								<div class="col-sm-8">
+									<select id="projectId" name="projectId" class="form-control" v-model="record.projectId" >
+										<option v-for="item in projects" :value="item.projectId" :name="item.projectName">{{item.projectName}}</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group" v-if="record.parentId != 0">
+								<label class="col-sm-3 control-label"><span style="color: red">*</span>是否开启维护：</label>
+								<div class="col-sm-8">
+									<select id="isMaintenance" name="isMaintenance" class="form-control" v-model="record.isMaintenance">
+										<option value="0">否</option>
+										<option value="1">是</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group" v-if="record.parentId != 0">
+								<label class="col-sm-3 control-label"><span style="color: red">*</span>his接口地址：</label>
+								<div class="col-sm-8">
+									<input id="commonUrl" name="hisHospitalId" v-model="commonUrl" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group" v-if="record.parentId != 0">
+								<label class="col-sm-3 control-label">检查报告单接口地址：</label>
+								<div class="col-sm-8">
+									<input id="jcReportUrl" name="jcReportUrl" v-model="jcReportUrl" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group" v-if="record.parentId != 0">
+								<label class="col-sm-3 control-label">检验报告单接口地址：</label>
+								<div class="col-sm-8">
+									<input id="jyReportUrl" name="jyReportUrl" v-model="jyReportUrl" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group" v-if="record.parentId != 0">
+								<label class="col-sm-3 control-label">微生物报告单接口地址：</label>
+								<div class="col-sm-8">
+									<input id="wswReportUrl" name="wswReportUrl" v-model="wswReportUrl" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group" v-if="record.parentId != 0">
+								<label class="col-sm-3 control-label"><span style="color: red">*</span>页面显示内容：</label>
+								<div class="col-sm-8">
+									<textarea id="maintenanceNotice" name="maintenanceNotice" class="form-control" v-model="record.maintenanceNotice" type="text"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">排序：</label>
+								<div class="col-sm-8">
+									<input id="seq" name="seq" class="form-control" v-model="record.seq"
+										   type="number">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button @click="save()" class="btn btn-primary" style="width: 100%;">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script th:inline="javascript" type="text/javascript">
+		var add = new Vue({
+			el: '#add',
+			data: {
+				prefix: "/admin/hospital/hospital",
+				pName: [[${pName}]],
+				record: {
+					hospitalId: '',
+					hospitalName: '',
+					projectId: '',
+					hisHospitalId: '',
+					parentId: [[${pId}]],
+					projectName: '',
+					seq: '0',
+					maintenanceNotice: '功能维护中，请稍后访问。',
+					isMaintenance: '0',
+					extend: "",
+				},
+				commonUrl: "",
+				wswReportUrl: "",
+				jyReportUrl: "",
+				jcReportUrl: "",
+				//是否为区域his1是 0不是
+				qyHIS: "0",
+				projects:[[${projects}]],
+			},
+			created: function () {
+				this.record.projectId = this.projects[0].projectId;
+			},
+			mounted: function () {
+
+			},
+			methods: {
+
+				getYhHospital: function () {
+					layer.open({
+						type:2,
+						title:"选择互联网医院",
+						area : [ '600px', '450px' ],
+						content:"/admin/hospital/hospital/yhTreeView"
+					})
+				},
+
+				/**
+				 * 保存
+				 */
+				save: function () {
+					var _this = this;
+					if(_this.qyHIS == 0) {
+						_this.record.hisHospitalId = "1";
+					}
+					_this.record.projectName = $("#projectId").find("option:selected").text();
+					if(!_this.record.hospitalName) {
+						parent.layer.alert("请输入医院名称");
+						return false;
+					}
+
+					if(_this.record.parentId != 0) {
+						if(_this.qyHIS == 1) {
+							if(!_this.record.hisHospitalId) {
+								parent.layer.alert("请输入HIS医院id");
+								return false;
+							}
+						}
+						if(!_this.commonUrl && _this.qyHIS != 1) {
+							parent.layer.alert("请输入his接口地址");
+							return false;
+						}
+					}
+					if(!_this.record.projectId) {
+						parent.layer.alert("请输入项目ID");
+						return false;
+					}
+					if(!_this.record.projectName) {
+						parent.layer.alert("请输入项目名称");
+						return false;
+					}
+					_this.record.extend = "{\n" +
+							"                \"commonUrl\": \"" + _this.commonUrl + "\"," +
+							"                \"jcReportUrl\": \"" + _this.jcReportUrl + "\"," +
+							"                \"jyReportUrl\": \"" + _this.jyReportUrl + "\"," +
+							"                \"wswReportUrl\": \"" + _this.wswReportUrl + "\"," +
+							"                \"qyHIS\": \"" + _this.qyHIS + "\"" +
+							"            }";
+					$.ajax({
+						cache : true,
+						type : "POST",
+						url : _this.prefix + "/save",
+						contentType: "application/json",
+						data : JSON.stringify(_this.record),
+						async : false,
+						success : function(data) {
+							if (data.code == 200) {
+								parent.layer.msg("保存成功");
+								parent.reLoad();
+								var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
+								parent.layer.close(index);
+
+							} else {
+								layer.alert(data.message)
+							}
+						},
+						error : function(request) {
+							layer.alert("Connection error");
+						}
+					});
+				},
+				dataValid: function (data,tips) {
+					if(!data){
+						layer.alert(tips);
+						var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
+						parent.layer.close(index);
+						return true;
+					}
+					return false;
+				}
+			}
+		})
+		function loadYHHospital(hospitalId,hospitalName){
+			add.record.hospitalId = hospitalId;
+			add.record.hospitalName = hospitalName;
+		}
+	</script>
+</body>
+</html>

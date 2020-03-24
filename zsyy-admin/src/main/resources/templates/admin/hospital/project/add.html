@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div id="add" class="wrapper wrapper-content animated fadeInRight" style="display: none">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+							<div class="form-group">
+								<label class="col-sm-3 control-label"><span style="color: red">*</span>项目名称：</label>
+								<div class="col-sm-8">
+									<input id="projectName" name="projectName" v-model="record.projectName" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label"><span style="color: red">*</span>项目等级：</label>
+								<div class="col-sm-8">
+									<select id="projectLevel" name="projectLevel" class="form-control" v-model="record.projectLevel">
+										<option v-for="item in projectLevels" :value="item.value">{{item.desc}}</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label"><span style="color: red">*</span>项目类型：</label>
+								<div class="col-sm-8">
+									<select id="projectType" name="projectType" class="form-control" v-model="record.projectType" >
+										<option selected value="2">单医院</option>
+										<option value="1">平台</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">排序：</label>
+								<div class="col-sm-8">
+									<input id="seq" name="seq" class="form-control" v-model="record.seq"
+										   type="number">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button @click="save()" class="btn btn-primary" style="width: 100%;">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script th:inline="javascript" type="text/javascript">
+		var add = new Vue({
+			el: '#add',
+			data: {
+				prefix: "/admin/hospital/project",
+				record: {
+					projectName: '',
+					projectLevel: '04',
+					projectType: '2',
+					seq: '0'
+				},
+				projectLevels: [[${projectLevels}]]
+			},
+			created: function () {
+				$("#add").show();
+			},
+			mounted: function () {
+			},
+			methods: {
+				/**
+				 * 保存
+				 */
+				save: function () {
+					var _this = this;
+					if (_this.dataValid(_this.record.projectName,"请输入项目名称")){
+						return false;
+					};
+					$.ajax({
+						cache : true,
+						type : "POST",
+						url : _this.prefix + "/save",
+						data : _this.record,
+						async : false,
+						success : function(data) {
+							if (data.code == 200) {
+								parent.layer.msg("保存成功");
+								parent.reLoad();
+								var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
+								parent.layer.close(index);
+
+							} else {
+								layer.alert(data.message)
+							}
+						},
+						error : function(request) {
+							laryer.alert("Connection error");
+						}
+					});
+				},
+				dataValid: function (data,tips) {
+					if(data == null || data == ""){
+						layer.alert(tips);
+						var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
+						parent.layer.close(index);
+						return true;
+					}
+					return false;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

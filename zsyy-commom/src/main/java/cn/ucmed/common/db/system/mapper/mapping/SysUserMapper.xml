@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ucmed.common.db.system.mapper.SysUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.ucmed.common.db.system.entity.SysUser">
+        <id column="user_id" property="userId" />
+        <result column="username" property="username" />
+        <result column="is_superman" property="isSuperman" />
+        <result column="is_project" property="isProject" />
+        <result column="name" property="name" />
+        <result column="password" property="password" />
+        <result column="hospital_id" property="hospitalId" />
+        <result column="project_id" property="projectId" />
+        <result column="dept_id" property="deptId" />
+        <result column="status" property="status" />
+        <result column="user_id_create" property="userIdCreate" />
+        <result column="last_login_hospital" property="lastLoginHospital" />
+        <result column="created_time" property="createdTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        user_id, username, is_superman, is_project, name, password, hospital_id, project_id, dept_id, status, user_id_create, last_login_hospital, created_time, update_time
+    </sql>
+</mapper>
