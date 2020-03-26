@@ -1,6 +1,5 @@
 package cn.ucmed.admin.controller;
 
-import cn.ucmed.common.shiro.ShiroUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -12,7 +11,6 @@ public class ToolController {
 
     @GetMapping("/")
     public String logout() {
-        ShiroUtils.logout();
         return "admin/blogOpen/main";
     }
 
