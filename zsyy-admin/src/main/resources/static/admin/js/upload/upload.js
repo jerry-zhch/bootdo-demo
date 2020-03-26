@@ -1,10 +1,10 @@
 function DragImgUpload(id,options,sourse) {
     this.me = $(id);
-    var defaultOpt = {
-        boxWidth:'200px',
-        boxHeight:'auto'
-    }
-    if(sourse!=""){
+    const defaultOpt = {
+        boxWidth: '200px',
+        boxHeight: 'auto'
+    };
+    if(sourse!==""){
         this.preview = $('<div id="preview"><img src="'+sourse+'" class="img-responsive"  style="width: 100%;height: 100px;" alt="" title=""> </div>');
     }else {
         this.preview = $('<div id="preview"><img src="/admin/img/upload.png" class="img-responsive"  style="width: 100%;height: 100px;" alt="" title=""> </div>');
@@ -30,7 +30,7 @@ DragImgUpload.prototype = {
             'border':'1px solid #cccccc',
             'padding':'0px',
             'cursor':'pointer'
-        })
+        });
         this.preview.css({
             'height':'100%',
             'overflow':'hidden'

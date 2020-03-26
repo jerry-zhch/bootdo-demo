@@ -1,9 +1,12 @@
 package cn.ucmed.common.interceptor;
 
+import cn.ucmed.common.config.CommonProperties;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
@@ -11,6 +14,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration
 public class InterceptorConfig implements WebMvcConfigurer {
+    @Autowired
+    private CommonProperties commonProperties;
 
     /**
      * 跨域支持
@@ -29,6 +34,10 @@ public class InterceptorConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(getLoginInterceptor()).addPathPatterns("/**")
                 .excludePathPatterns("/**/*.css").excludePathPatterns("/**/*.js")
+                .excludePathPatterns("/*.js.map").excludePathPatterns("/echarts/pie")
+
+                .excludePathPatterns("/open/**")
+
                 .excludePathPatterns("/**/*.png").excludePathPatterns("/**/*.jpg")
                 .excludePathPatterns("/**/*.gif").excludePathPatterns("/**/*.gif")
                 .excludePathPatterns("/show/**").excludePathPatterns("/api/**")
@@ -36,7 +45,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/admin/**")
                 .excludePathPatterns("/")
                 .excludePathPatterns("/FontIcoList.html")
-                .excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/doc.html/**")
+                .excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/doc.html/**","/swagger-ui.html")
                 .excludePathPatterns("/wechat/autoLogin")
                 .excludePathPatterns("/pc/autoLogin")
                 .excludePathPatterns("/userCenter/autoLogin")
@@ -45,6 +54,12 @@ public class InterceptorConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/provide/wx/**")
                 .excludePathPatterns("/patientVisit/detail")
                 .excludePathPatterns("/functionSwitch/**");
+    }
+
+    //地址映射
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/files/**").addResourceLocations("file:///"+commonProperties.getProfile());
     }
 
     @Bean

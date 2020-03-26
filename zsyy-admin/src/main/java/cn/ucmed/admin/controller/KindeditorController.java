@@ -2,6 +2,7 @@ package cn.ucmed.admin.controller;
 
 import cn.ucmed.common.config.CommonProperties;
 import com.alibaba.fastjson.JSONObject;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.http.fileupload.FileItemFactory;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
@@ -24,6 +25,7 @@ import java.util.*;
 /**
  * 富文本编辑器图片上传
  */
+@Slf4j
 @RequestMapping("/admin/kindEditor")
 @Component
 @RestController
@@ -64,13 +66,15 @@ public class KindeditorController {
         //检查目录
         File uploadDir = new File(savePath);
         if (!uploadDir.isDirectory()) {
-            out.println(getError("上传目录不存在。"));
-            return;
+            uploadDir.mkdir();
+//            out.println(getError("上传目录不存在。"));
+//            return;
         }
         //检查目录写权限
         if (!uploadDir.canWrite()) {
-            out.println(getError("上传目录没有写权限。"));
-            return;
+            log.info("上传目录没有写权限。");
+//            out.println(getError("上传目录没有写权限。"));
+//            return;
         }
 
         String dirName = request.getParameter("dir");
@@ -126,7 +130,7 @@ public class KindeditorController {
                 FileCopyUtils.copy(mf.getBytes(), uploadFile);
                 JSONObject obj = new JSONObject();
                 obj.put("error", 0);
-                obj.put("url", request.getContextPath() + "/localImages/" + dirName + "/" + ymd + "/" + newFileName);
+                obj.put("url", request.getContextPath() + "/files/localImages/" + dirName + "/" + ymd + "/" + newFileName);
                 out.println(obj.toJSONString());
             } catch (IOException e) {
                 e.printStackTrace();

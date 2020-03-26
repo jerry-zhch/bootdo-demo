@@ -7,8 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * @author zhch
- * @since 2020/3/24 18:24
+ * 日期工具类
  */
 @Slf4j
 public class DateUtil {
@@ -21,6 +20,15 @@ public class DateUtil {
             log.debug("StringToDate4 error==>"+var2);
             return new Date();
         }
+    }
+
+    public static String dateTimeToString(Date date) {
+        try {
+            return sdf2.format(date);
+        } catch(Exception e) {
+            log.error("dateTimeToString==>error==>"+e);
+        }
+        return "";
     }
 
 }

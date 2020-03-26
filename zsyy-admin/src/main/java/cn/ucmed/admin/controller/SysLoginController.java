@@ -109,7 +109,7 @@ public class SysLoginController extends SysBaseController {
         sysUserService.updateById(entity);
     }
 
-
+    //登录后获取该用户的权限菜单
     @GetMapping("/index")
     public String index(Model model) {
         if (sysUserService.isSuperman(getUserId())) {

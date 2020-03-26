@@ -10,10 +10,42 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2020-03-24 19:10:08
+Date: 2020-03-26 18:33:36
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for blog_content
+-- ----------------------------
+DROP TABLE IF EXISTS `blog_content`;
+CREATE TABLE `blog_content` (
+  `cid` bigint(20) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) DEFAULT NULL COMMENT '标题',
+  `slug` varchar(255) DEFAULT NULL,
+  `created` bigint(20) DEFAULT NULL COMMENT '创建人id',
+  `modified` bigint(20) DEFAULT NULL COMMENT '最近修改人id',
+  `content` text COMMENT '内容',
+  `type` varchar(16) DEFAULT NULL COMMENT '类型',
+  `tags` varchar(200) DEFAULT NULL COMMENT '标签',
+  `categories` varchar(200) DEFAULT NULL COMMENT '分类',
+  `hits` int(5) DEFAULT NULL,
+  `comments_num` int(5) DEFAULT '0' COMMENT '评论数量',
+  `allow_comment` int(1) DEFAULT '0' COMMENT '开启评论',
+  `allow_ping` int(1) DEFAULT '0' COMMENT '允许ping',
+  `allow_feed` int(1) DEFAULT '0' COMMENT '允许反馈',
+  `status` int(1) DEFAULT NULL COMMENT '状态',
+  `author` varchar(100) DEFAULT NULL COMMENT '作者',
+  `gtm_create` datetime DEFAULT NULL COMMENT '创建时间',
+  `gtm_modified` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`cid`)
+) ENGINE=InnoDB AUTO_INCREMENT=125 DEFAULT CHARSET=utf8 COMMENT='文章内容';
+
+-- ----------------------------
+-- Records of blog_content
+-- ----------------------------
+INSERT INTO `blog_content` VALUES ('123', '微信公众平台接口调试工具', null, null, null, '<ol id=\"manual\" class=\"manual\" style=\"color: rgb(51, 51, 51); font-family: &quot;Microsoft Yahei&quot;, Tahoma, Arial;\"><li style=\"margin-top: 10px; list-style: none;\"><b>使用说明：</b></li><li style=\"margin-top: 10px; list-style: none;\">（1）选择合适的接口。</li><li style=\"margin-top: 10px; list-style: none;\">（2）系统会生成该接口的参数表，您可以直接在文本框内填入对应的参数值。（红色星号表示该字段必填）</li><li style=\"margin-top: 10px; list-style: none;\">（3）点击检查问题按钮，即可得到相应的调试信息。</li></ol><div id=\"content\" class=\"content\" style=\"padding: 10px 15px; border: 1px solid rgb(204, 204, 204); color: rgb(51, 51, 51); background-color: rgb(248, 248, 248); border-radius: 3px; margin-bottom: 20px; font-family: &quot;Microsoft Yahei&quot;, Tahoma, Arial;\"><div id=\"typeSelectorDiv\" class=\"frm_control_group\" style=\"margin-bottom: 20px;\"><label class=\"frm_label\" style=\"float: left; margin-right: 38px; vertical-align: top; zoom: 1;\">一、接口类型：</label><div class=\"frm_controls\" style=\"overflow: hidden;\"><select id=\"typeSelector\" class=\"frm_input_box\" style=\"zoom: 1; line-height: 30px; vertical-align: middle; border-color: rgb(179, 179, 179); box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 1px inset; border-radius: 3px; background-color: rgb(255, 255, 255);\">&nbsp;			 				 					<option value=\"0\">基础支持</option>&nbsp;						 			 				 					<option value=\"1\">向用户发送消息</option>&nbsp;						 			 				 					<option value=\"2\">用户管理</option>&nbsp;						 			 				 					<option value=\"3\">自定义菜单</option>&nbsp;						 			 				 					<option value=\"4\">推广支持</option>&nbsp;						 			 				 					<option value=\"5\">消息接口调试</option>&nbsp;						 			 				 					<option value=\"6\">硬件接入api接口调试</option>&nbsp;						 			 				 					<option value=\"7\">硬件接入消息接口调试</option>&nbsp;						 			 				 					<option value=\"8\">卡劵接口</option>&nbsp;						 			 				 					<option value=\"9\">评论接口</option>&nbsp;						 			 		</select></div></div><div id=\"formSelectorDiv\" class=\"frm_control_group\" style=\"margin-bottom: 20px;\"><label class=\"frm_label\" style=\"float: left; margin-right: 38px; vertical-align: top; zoom: 1;\">二、接口列表：</label><div class=\"frm_controls\" style=\"overflow: hidden;\"><select id=\"formSelector\" class=\"frm_input_box\" style=\"zoom: 1; line-height: 30px; vertical-align: middle; border-color: rgb(179, 179, 179); box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 1px inset; border-radius: 3px; background-color: rgb(255, 255, 255); min-width: 330px;\">&nbsp;			 				<option value=\"0\">获取access_token接口 /token</option>&nbsp;			 				<option value=\"1\">多媒体文件上传接口 /media/upload</option>&nbsp;			 				<option value=\"2\">下载多媒体文件接口 /media/get</option>&nbsp;			 				<option value=\"3\">上传logo接口 /media/uploadimg</option>&nbsp;			 		</select>&nbsp;<span id=\"methodType\" class=\"frm_tips\" style=\"color: rgb(163, 163, 163); display: inline-block; zoom: 1; margin-left: 5px;\">方法：GET</span></div></div><div id=\"formContent\" class=\"frm_control_group\" style=\"margin-bottom: 20px;\"><label style=\"margin-right: 38px; vertical-align: top; zoom: 1;\">三、参数列表：</label><br><br><div id=\"formContainer\"><div class=\"inputDiv\"><span class=\"red\" style=\"color: red; vertical-align: top;\">*</span>&nbsp;<span class=\"name\" style=\"display: inline-block; zoom: 1; width: 125px; vertical-align: top;\">grant_type :</span>&nbsp;<input type=\"text\" reserved-name=\"grant_type\" method=\"GET\" data-type=\"string\" required=\"true\" value=\"client_credential\" disabled=\"true\" readonly=\"true\" style=\"width: 200px;\" aria-required=\"true\"><span class=\"tips\" style=\"vertical-align: top; display: block; margin-left: 139px; color: rgb(163, 163, 163);\">获取access_token填写client_credential</span><span class=\"errMsg\" style=\"vertical-align: top; display: block; margin-left: 139px;\"></span><br></div><div class=\"inputDiv\"><span class=\"red\" style=\"color: red; vertical-align: top;\">*</span>&nbsp;<span class=\"name\" style=\"display: inline-block; zoom: 1; width: 125px; vertical-align: top;\">appid :</span>&nbsp;<input type=\"text\" reserved-name=\"appid\" method=\"GET\" data-type=\"string\" required=\"true\" style=\"width: 200px;\" aria-required=\"true\"><span class=\"tips\" style=\"vertical-align: top; display: block; margin-left: 139px; color: rgb(163, 163, 163);\">填写appid</span><span class=\"errMsg\" style=\"vertical-align: top; display: block; margin-left: 139px;\"></span><br></div><div class=\"inputDiv\"><span class=\"red\" style=\"color: red; vertical-align: top;\">*</span>&nbsp;<span class=\"name\" style=\"display: inline-block; zoom: 1; width: 125px; vertical-align: top;\">secret :</span>&nbsp;<input type=\"text\" reserved-name=\"secret\" method=\"GET\" data-type=\"string\" required=\"true\" style=\"width: 200px;\" aria-required=\"true\"><span class=\"tips\" style=\"vertical-align: top; display: block; margin-left: 139px; color: rgb(163, 163, 163);\">填写appsecret</span><div><br></div><span class=\"errMsg\" style=\"vertical-align: top; display: block; margin-left: 139px;\"></span></div></div></div></div>', 'article', null, '', null, '0', '1', '0', '0', '1', 'zhch', '2020-03-26 10:21:29', '2020-03-26 10:21:29');
+INSERT INTO `blog_content` VALUES ('124', '微信公众平台开发者功能调整公告', null, null, null, '<p><img src=\"/files/7e9a5664-2538-4365-a4f9-340c1e474bde.png\" style=\"width: 287px;\"></p><h3 class=\"announcement_title\" style=\"margin-top: 0px; margin-bottom: 0px; padding-bottom: 42px; font-weight: 400; font-size: 18px; text-align: center; color: rgb(53, 53, 53); font-family: &quot;Helvetica Neue&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, 黑体, Arial, sans-serif;\">微信公众平台开发者功能调整公告</h3><div id=\"content\" class=\"announcement_content\" style=\"color: rgb(53, 53, 53); font-family: &quot;Helvetica Neue&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, 黑体, Arial, sans-serif;\"><p style=\"margin-bottom: 0px; max-width: 100%;\">为保障微信公众平台用户帐号安全，降低微信公众平台用户开发者密码泄漏引发的盗用风险，平台将于2020年4月上旬起灰度调整部分开发者功能的使用方法，被灰度到的开发者也可以在站内信中查看相关通知，本功能调整也将在5月全面上线。具体调整说明如下：</p><h4 id=\"-access_token-\" style=\"margin-top: 0px; margin-bottom: 0px; max-width: 100%; font-weight: 400;\">一、 access_token接口调整</h4><p style=\"margin-bottom: 0px; max-width: 100%;\">在开发者进行获取 access_token调用时，如平台判断本次调用IP可能存在风险则进入风险调用确认流程，需要用户管理员确认后才可以成功获取。具体流程为：</p><p style=\"margin-bottom: 0px; max-width: 100%;\">开发者通过某IP发起调用-&gt;平台返回错误码[89503]并同时下发模板消息给公众号管理员-&gt;公众号管理员确认该IP可以调用-&gt;开发者使用该IP再次发起调用-&gt;调用成功。</p><p style=\"margin-bottom: 0px; max-width: 100%;\">如公众号管理员第一次拒绝该IP调用，该IP 1个小时内将无法发起调用，如公众号管理员多次拒绝该IP调用，该IP将可能长期无法发起调用。平台建议开发者在发起调用前主动与管理员沟通确认调用需求，或请求管理员开启IP白名单功能并将该IP加入IP白名单列表。详情请参考<a href=\"https://developers.weixin.qq.com/doc/offiaccount/Basic_Information/Get_access_token.html\" style=\"color: rgb(87, 107, 149); outline: 0px; max-width: 100%;\">开发文档</a>。</p><h4 id=\"-api-\" style=\"margin-top: 0px; margin-bottom: 0px; max-width: 100%; font-weight: 400;\">二、API群发接口调整</h4><p style=\"margin-bottom: 0px; max-width: 100%;\">平台将对已开启公众号群发保护的用户灰度开启API群发保护。该功能开启后，通过API群发接口对全部用户群发需要公众号管理员确认后才会群发成功，如管理员拒绝该次群发则群发失败，平台将会推送错误码到开发者服务器：</p><p style=\"margin-bottom: 0px; max-width: 100%;\">err(40001)：管理员拒绝</p><p style=\"margin-bottom: 0px; max-width: 100%;\">err(40002)：管理员30分钟内无响应，超时</p><p style=\"margin-bottom: 0px; max-width: 100%;\">用户可通过设置-安全中心-风险操作保护中关闭API群发保护功能。详情请参考<a href=\"https://developers.weixin.qq.com/doc/offiaccount/Message_Management/Batch_Sends_and_Originality_Checks.html\" style=\"color: rgb(87, 107, 149); outline: 0px; max-width: 100%;\">开发文档</a>。</p><h4 id=\"-\" style=\"margin-top: 0px; margin-bottom: 0px; max-width: 100%; font-weight: 400;\">三、新增关闭公众号开发者功能</h4><p style=\"margin-bottom: 0px; max-width: 100%;\">如无需再使用API功能，公众号管理员可以通过开发-基本配置-关闭开发者功能来主动关停API功能。该功能可以在需要使用时再次开启。对于长期不使用API功能且存在开发者密码泄漏风险的帐号，平台可能会主动为用户关闭该功能。</p><p style=\"margin-bottom: 0px; max-width: 100%;\">开发者密码具有微信公众平台帐号最高权限，与微信公众平台登录密码同样重要，我们再次提醒公众平台运营者不要将开发者密码透露给任何团队，并利用IP白名单功能主动限制恶意调用，规避因开发者密码泄漏造成的帐号被盗用风险。对于未主动开启IP白名单功能的帐号，平台建议用户做好风险调用确认工作，避免正常业务受到影响。</p><p style=\"margin-bottom: 0px; max-width: 100%;\">对于使用第三方平台的用户，平台建议用户通过授权机制使用正规的第三方平台来管理公众平台帐号，只授权业务所需的最小权限并及时取消不必要的第三方授权。</p><br style=\"max-width: 100%;\"></div><p class=\"sign\" style=\"margin-bottom: 0px; padding-top: 28px; text-align: right; color: rgb(53, 53, 53); font-family: &quot;Helvetica Neue&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, 黑体, Arial, sans-serif;\">微信团队<br><span id=\"online_time\">2020年03月17日</span></p>', 'article', null, '', null, '0', '1', '0', '0', '1', 'zhch', '2020-03-26 10:22:25', '2020-03-26 10:22:25');
 
 -- ----------------------------
 -- Table structure for function_switch
@@ -156,11 +188,29 @@ CREATE TABLE `sys_dept` (
   `del_flag` tinyint(4) DEFAULT '0' COMMENT '是否删除  -1：已删除  0：禁用  1: 正常',
   `hospital_id` varchar(64) NOT NULL COMMENT '医院id',
   PRIMARY KEY (`dept_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COMMENT='部门管理';
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COMMENT='部门管理';
 
 -- ----------------------------
 -- Records of sys_dept
 -- ----------------------------
+INSERT INTO `sys_dept` VALUES ('36', '0', '信息科', '1', '1', 'b943887a3d464912b85df65019219218');
+
+-- ----------------------------
+-- Table structure for sys_file
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_file`;
+CREATE TABLE `sys_file` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `type` int(11) DEFAULT NULL COMMENT '文件类型',
+  `url` varchar(200) DEFAULT NULL COMMENT 'URL地址',
+  `create_date` datetime DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=149 DEFAULT CHARSET=utf8 COMMENT='文件上传';
+
+-- ----------------------------
+-- Records of sys_file
+-- ----------------------------
+INSERT INTO `sys_file` VALUES ('148', '0', '/files/7e9a5664-2538-4365-a4f9-340c1e474bde.png', '2020-03-26 09:39:03');
 
 -- ----------------------------
 -- Table structure for sys_hospital
@@ -207,7 +257,7 @@ CREATE TABLE `sys_menu` (
   `gmt_create` datetime DEFAULT NULL COMMENT '创建时间',
   `gmt_modified` datetime DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`menu_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=287 DEFAULT CHARSET=utf8 COMMENT='菜单管理';
+) ENGINE=InnoDB AUTO_INCREMENT=297 DEFAULT CHARSET=utf8 COMMENT='菜单管理';
 
 -- ----------------------------
 -- Records of sys_menu
@@ -246,16 +296,26 @@ INSERT INTO `sys_menu` VALUES ('202', '174', '增加医院', '/admin/hospital/ho
 INSERT INTO `sys_menu` VALUES ('203', '174', '医院修改', '/admin/hospital/hospital/edit', 'admin:hospital:hospital:edit', '2', 'fa fa-arrows-h', '2', null, null);
 INSERT INTO `sys_menu` VALUES ('204', '174', '医院删除', '/admin/hospital/hospital/remove', 'admin:hospital:hospital:remove', '2', 'fa fa-close', '3', null, null);
 INSERT INTO `sys_menu` VALUES ('232', '0', '静态功能管理', '', '', '0', 'fa fa-bank', '2', null, null);
-INSERT INTO `sys_menu` VALUES ('251', '0', '医院信息管理', '', '', '0', 'fa fa-vcard', '0', null, null);
+INSERT INTO `sys_menu` VALUES ('251', '0', '医院信息管理', '', '', '0', 'fa fa-arrows', '0', null, null);
 INSERT INTO `sys_menu` VALUES ('269', '143', '新增', null, 'admin:news:add', '2', '', '0', null, null);
 INSERT INTO `sys_menu` VALUES ('270', '143', '修改', null, 'admin:news:edit', '2', null, '1', null, null);
 INSERT INTO `sys_menu` VALUES ('271', '143', '删除', null, 'admin:news:delete', '2', null, null, null, null);
 INSERT INTO `sys_menu` VALUES ('272', '143', '批量删除', null, 'admin:news:batchRemove', '2', null, null, null, null);
-INSERT INTO `sys_menu` VALUES ('282', '0', '功能', '', '', '0', 'fa fa-bar-chart', '999', null, null);
+INSERT INTO `sys_menu` VALUES ('282', '0', '功能管理', '', '', '0', 'fa fa-bar-chart', '66', null, null);
 INSERT INTO `sys_menu` VALUES ('283', '282', '功能开关', '/admin/functionSwitch', 'admin:functionSwitch:functionSwitch', '1', 'fa fa-folder', '1', null, null);
 INSERT INTO `sys_menu` VALUES ('284', '283', '新增', '', 'admin:functionSwitch:add', '2', '', '1', null, null);
 INSERT INTO `sys_menu` VALUES ('285', '283', '修改', '', 'admin:functionSwitch:edit', '2', '', '2', null, null);
 INSERT INTO `sys_menu` VALUES ('286', '283', '删除', '', 'admin:functionSwitch:remove', '2', '', '3', null, null);
+INSERT INTO `sys_menu` VALUES ('287', '0', '博客管理', '', '', '0', 'fa fa-photo', '66', null, null);
+INSERT INTO `sys_menu` VALUES ('288', '287', '发布文章', '/admin/blog/bContent/add', 'blog:bContent:add', '1', 'fa fa-arrows', null, null, null);
+INSERT INTO `sys_menu` VALUES ('289', '287', '文章列表', '/admin/blog/bContent', 'blog:bContent:bContent', '1', 'fa fa-bars', null, null, null);
+INSERT INTO `sys_menu` VALUES ('290', '289', '新增', '', 'blog:bContent:add', '2', 'fa fa-plus', null, null, null);
+INSERT INTO `sys_menu` VALUES ('291', '289', '编辑', '', 'blog:bContent:edit', '2', 'fa fa-window-minimize', null, null, null);
+INSERT INTO `sys_menu` VALUES ('292', '289', '删除', '', 'blog:bContent:remove', '2', 'fa fa-remove', null, null, null);
+INSERT INTO `sys_menu` VALUES ('293', '289', '批量删除', '', 'blog:bContent:batchRemove', '2', 'fa fa-remove', null, null, null);
+INSERT INTO `sys_menu` VALUES ('294', '0', '其他模块', '', '', '0', 'fa fa-folder-open', '99', null, null);
+INSERT INTO `sys_menu` VALUES ('295', '294', '百度图表', '/admin/graphEcharts', '', '1', '', null, null, null);
+INSERT INTO `sys_menu` VALUES ('296', '294', '系统监控', '/druid/datasource.html', '', '1', '', null, null, null);
 
 -- ----------------------------
 -- Table structure for sys_project
@@ -297,12 +357,12 @@ CREATE TABLE `sys_role` (
   `gmt_create` datetime DEFAULT NULL COMMENT '创建时间',
   `gmt_modified` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`role_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='角色';
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='角色';
 
 -- ----------------------------
 -- Records of sys_role
 -- ----------------------------
-INSERT INTO `sys_role` VALUES ('11', '1119110710020919411', '', '医院管理员', null, '医院管理员', '1', '2019-05-14 19:50:44', '2019-11-29 02:20:46');
+INSERT INTO `sys_role` VALUES ('13', 'b943887a3d464912b85df65019219218', '测试医院1', '消息查看', null, '', '1', '2020-03-24 12:26:21', '2020-03-24 12:26:21');
 
 -- ----------------------------
 -- Table structure for sys_role_menu
@@ -313,7 +373,7 @@ CREATE TABLE `sys_role_menu` (
   `role_id` bigint(20) DEFAULT NULL COMMENT '角色ID',
   `menu_id` bigint(20) DEFAULT NULL COMMENT '菜单ID',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9171 DEFAULT CHARSET=utf8 COMMENT='角色与菜单对应关系';
+) ENGINE=InnoDB AUTO_INCREMENT=9174 DEFAULT CHARSET=utf8 COMMENT='角色与菜单对应关系';
 
 -- ----------------------------
 -- Records of sys_role_menu
@@ -517,6 +577,9 @@ INSERT INTO `sys_role_menu` VALUES ('9167', '11', '147');
 INSERT INTO `sys_role_menu` VALUES ('9168', '11', '121');
 INSERT INTO `sys_role_menu` VALUES ('9169', '11', '77');
 INSERT INTO `sys_role_menu` VALUES ('9170', '11', '3');
+INSERT INTO `sys_role_menu` VALUES ('9171', '13', '121');
+INSERT INTO `sys_role_menu` VALUES ('9172', '13', '125');
+INSERT INTO `sys_role_menu` VALUES ('9173', '13', '-1');
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -538,12 +601,13 @@ CREATE TABLE `sys_user` (
   `created_time` datetime NOT NULL COMMENT '创建时间',
   `update_time` datetime NOT NULL COMMENT '修改时间',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
 INSERT INTO `sys_user` VALUES ('1', 'admin', '1', '0', '超管', '27bd386e70f280e24c2f4f2a549b82cf', 'b943887a3d464912b85df65019219218', '3b069fc06c0211eab6780050569b0a11', '0', '1', '0', 'b943887a3d464912b85df65019219218', '2019-05-09 20:13:01', '2019-05-09 20:13:03');
+INSERT INTO `sys_user` VALUES ('4', 'ceshi', '0', '0', '测试', 'a31c1e2c1b18f3d1392ba79584b9445a', 'b943887a3d464912b85df65019219218', '3b069fc06c0211eab6780050569b0a11', '36', '1', '1', 'b943887a3d464912b85df65019219218', '2020-03-24 12:27:20', '2020-03-24 12:27:20');
 
 -- ----------------------------
 -- Table structure for sys_user_role
@@ -554,9 +618,10 @@ CREATE TABLE `sys_user_role` (
   `user_id` bigint(20) DEFAULT NULL COMMENT '用户ID',
   `role_id` bigint(20) DEFAULT NULL COMMENT '角色ID',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=163 DEFAULT CHARSET=utf8 COMMENT='用户与角色对应关系';
+) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8 COMMENT='用户与角色对应关系';
 
 -- ----------------------------
 -- Records of sys_user_role
 -- ----------------------------
 INSERT INTO `sys_user_role` VALUES ('162', '13', '11');
+INSERT INTO `sys_user_role` VALUES ('163', '4', '13');

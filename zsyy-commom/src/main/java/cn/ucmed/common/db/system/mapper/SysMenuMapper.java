@@ -8,9 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @auther 郄彦腾
- * @create 2019-01-24 13:21:17
- * @describe 菜单管理mapper类
+ * 菜单管理mapper类
  */
 public interface SysMenuMapper extends BaseMapper<SysMenu> {
 
@@ -31,4 +29,5 @@ public interface SysMenuMapper extends BaseMapper<SysMenu> {
     List<String> listUserPerms(@Param("id") Long id, @Param("hospitalId") String hospitalId);
 
     List<SysMenu> listMenuByUserId(@Param("id") Long id, @Param("hospitalId") String hospitalId);
+
 }

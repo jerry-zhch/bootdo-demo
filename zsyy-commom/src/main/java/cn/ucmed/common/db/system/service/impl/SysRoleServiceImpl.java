@@ -19,16 +19,10 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * @auther 郄彦腾
- * @create 2019-01-24 13:21:42
- * @describe 角色服务实现类
+ * 角色服务实现类
  */
 @Service
 public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> implements ISysRoleService {
-
-    public static final String ROLE_ALL_KEY = "\"role_all\"";
-
-    public static final String DEMO_CACHE_NAME = "role";
 
     @Autowired
     SysRoleMapper sysRoleMapper;

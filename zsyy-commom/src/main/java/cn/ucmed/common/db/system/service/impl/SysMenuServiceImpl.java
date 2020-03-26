@@ -10,7 +10,6 @@ import cn.ucmed.common.utils.BuildTree;
 import cn.ucmed.common.utils.StringUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -19,9 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.*;
 
 /**
- * @auther 郄彦腾
- * @create 2019-01-24 13:21:17
- * @describe 菜单管理服务实现类
+ * 菜单管理服务实现类
  */
 @Service
 @Transactional(readOnly = true,rollbackFor = Exception.class)
@@ -34,18 +31,17 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
 
     @Override
     public Tree<SysMenu> getTree() {
-        List<Tree<SysMenu>> trees = new ArrayList<Tree<SysMenu>>();
+        List<Tree<SysMenu>> trees = new ArrayList<>();
         List<SysMenu> menus = sysMenuMapper.selectList(new QueryWrapper<>());
         for (SysMenu sysSysMenu : menus) {
-            Tree<SysMenu> tree = new Tree<SysMenu>();
+            Tree<SysMenu> tree = new Tree<>();
             tree.setId(sysSysMenu.getMenuId().toString());
             tree.setParentId(sysSysMenu.getParentId().toString());
             tree.setText(sysSysMenu.getName());
             trees.add(tree);
         }
         // 默认顶级菜单为０，根据数据库实际情况调整
-        Tree<SysMenu> t = BuildTree.build(trees);
-        return t;
+        return BuildTree.build(trees);
     }
 
     @Override
@@ -58,16 +54,13 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
             menuIds.add(sysRoleMenu.getMenuId());
         }
 
-        List<Long> temp = menuIds;
         for (SysMenu menu : menus) {
-            if (temp.contains(menu.getParentId())) {
-                menuIds.remove(menu.getParentId());
-            }
+            menuIds.remove(menu.getParentId());
         }
-        List<Tree<SysMenu>> trees = new ArrayList<Tree<SysMenu>>();
+        List<Tree<SysMenu>> trees = new ArrayList<>();
         List<SysMenu> sysMenus = sysMenuMapper.selectList(new QueryWrapper<>());
         for (SysMenu sysSysMenu : sysMenus) {
-            Tree<SysMenu> tree = new Tree<SysMenu>();
+            Tree<SysMenu> tree = new Tree<>();
             tree.setId(sysSysMenu.getMenuId().toString());
             tree.setParentId(sysSysMenu.getParentId().toString());
             tree.setText(sysSysMenu.getName());
@@ -82,12 +75,10 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
             trees.add(tree);
         }
         // 默认顶级菜单为０，根据数据库实际情况调整
-        Tree<SysMenu> t = BuildTree.build(trees);
-        return t;
+        return BuildTree.build(trees);
     }
 
     /**
-     * @param
      * @return 树形菜单
      */
     @Cacheable
@@ -107,8 +98,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
             trees.add(tree);
         }
         // 默认顶级菜单为０，根据数据库实际情况调整
-        Tree<SysMenu> t = BuildTree.build(trees);
-        return t;
+        return BuildTree.build(trees);
     }
 
     @Override
@@ -137,7 +127,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
 
     @Override
     public List<Tree<SysMenu>> listMenuTree(Long id,String hospitalId) {
-        List<Tree<SysMenu>> trees = new ArrayList<Tree<SysMenu>>();
+        List<Tree<SysMenu>> trees = new ArrayList<>();
         List<SysMenu> menus = sysMenuMapper.listMenuByUserId(id,hospitalId);
         for (SysMenu sysSysMenu : menus) {
             Tree<SysMenu> tree = new Tree<SysMenu>();
@@ -151,16 +141,15 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
             trees.add(tree);
         }
         // 默认顶级菜单为０，根据数据库实际情况调整
-        List<Tree<SysMenu>> list = BuildTree.buildList(trees, "0");
-        return list;
+        return BuildTree.buildList(trees, "0");
     }
 
     @Override
     public List<Tree<SysMenu>> superMenuTree() {
-        List<Tree<SysMenu>> trees = new ArrayList<Tree<SysMenu>>();
+        List<Tree<SysMenu>> trees = new ArrayList<>();
         List<SysMenu> menus = list(new QueryWrapper<SysMenu>().orderByAsc("order_num"));
         for (SysMenu sysSysMenu : menus) {
-            Tree<SysMenu> tree = new Tree<SysMenu>();
+            Tree<SysMenu> tree = new Tree<>();
             tree.setId(sysSysMenu.getMenuId().toString());
             tree.setParentId(sysSysMenu.getParentId().toString());
             tree.setText(sysSysMenu.getName());
@@ -171,7 +160,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
             trees.add(tree);
         }
         // 默认顶级菜单为０，根据数据库实际情况调整
-        List<Tree<SysMenu>> list = BuildTree.buildList(trees, "0");
-        return list;
+        return BuildTree.buildList(trees, "0");
     }
+
 }

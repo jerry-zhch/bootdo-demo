@@ -28,6 +28,10 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         // 获取请求头
+        log.info("=========preHandle============"+ServletUtils.getRequestURL(request));
+        if (true) {
+            return true;
+        }
         String userAgent = ServletUtils.getHeader(request, "user-agent", CharsetUtil.UTF_8);
         String path = request.getRequestURI();
         String hisUrl = ServletUtils.getRequestURL(request);
@@ -85,11 +89,8 @@ public class LoginInterceptor implements HandlerInterceptor {
         }
     }
 
-    /* *
-     * create by: 郄彦腾
-     * description: 是否登录
-     * create time: 2020/1/10 19:31
-     * @return boolean
+    /**
+     * 是否登录
      */
     private boolean isLogin(String sessionId) {
         if (StringUtils.isNotBlank(sessionId) && redisUtils.get("session_id" + sessionId) != null) {

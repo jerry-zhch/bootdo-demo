@@ -8,7 +8,7 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
-@MapperScan({"cn.ucmed.common.db.*.mapper"})
+@MapperScan({"cn.ucmed.common.db.*.mapper","cn.ucmed.common.dbplus.mapper"})
 @EnableCaching  // 开启redis注解
 @EnableAsync
 @Slf4j

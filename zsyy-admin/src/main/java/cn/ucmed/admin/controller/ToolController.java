@@ -13,8 +13,21 @@ public class ToolController {
     @GetMapping("/")
     public String logout() {
         ShiroUtils.logout();
-        return "redirect:/admin/login";
+        return "admin/blogOpen/main";
     }
+
+    //百度charts示例
+    @GetMapping("/admin/graphEcharts")
+    public String graphEcharts() {
+        return "admin/demo/graphEcharts";
+    }
+
+    //首页
+    @GetMapping("/admin/main")
+    public String main() {
+        return "main";
+    }
+
 
     @GetMapping("/admin/swagger")
     public String swagger() {

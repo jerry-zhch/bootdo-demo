@@ -12,5 +12,9 @@
     zsyy-admin：管理后台项目
     zsyy-common：公共模块
 
+#部分功能
+    需要在interceptorConfig中配置
+    系统监控：http://localhost:8888/druid/datasource.html
+    百度图标：http://localhost:8888/admin/graphEcharts
 
 
